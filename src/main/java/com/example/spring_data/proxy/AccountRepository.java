@@ -18,5 +18,5 @@ public interface AccountRepository extends CrudRepository<Account, Long> {
 
     @Modifying
     @Query("UPDATE account SET amount =:amount WHERE Id=:accountId")
-    void UpdateAmountById (Long accountId, BigDecimal amount);
+    void updateAmountById (Long accountId, BigDecimal amount);
 }
