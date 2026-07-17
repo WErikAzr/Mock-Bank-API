@@ -26,6 +26,11 @@ public class AccountService {
                 findById(receiverId).
                 orElseThrow(() -> new AccountNotFoundException("Receiver account not found"));
 
+
+        if(senderAccount.getAmount().compareTo(amount) <=0){
+            throw new IllegalStateException("Insufficient funds to complete the operation");
+
+        }
         BigDecimal senderNewAmount = senderAccount.getAmount().subtract(amount);
         BigDecimal receiverNewAmount = receiverAccount.getAmount().subtract(amount);
 
