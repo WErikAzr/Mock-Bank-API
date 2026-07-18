@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class AccountService {
@@ -37,5 +38,13 @@ public class AccountService {
         //updating sender account
         accountRepository.updateAmountById(senderId, senderNewAmount);
         accountRepository.updateAmountById(receiverId, receiverNewAmount);
+    }
+
+    public Iterable<Account> getAllAccounts(){
+        return accountRepository.findAll();
+    }
+
+    public List<Account> findAccountByName(String name){
+        return  accountRepository.findAccountByName(name);
     }
 }
