@@ -1,4 +1,4 @@
-package com.example.spring_data.proxy;
+package com.example.spring_data.repository;
 
 import com.example.spring_data.model.Account;
 import org.springframework.data.jdbc.repository.query.Modifying;

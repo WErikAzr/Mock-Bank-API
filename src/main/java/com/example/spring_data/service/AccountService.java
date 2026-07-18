@@ -1,7 +1,7 @@
 package com.example.spring_data.service;
 import com.example.spring_data.exception.AccountNotFoundException;
 import com.example.spring_data.model.Account;
-import com.example.spring_data.proxy.AccountRepository;
+import com.example.spring_data.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
