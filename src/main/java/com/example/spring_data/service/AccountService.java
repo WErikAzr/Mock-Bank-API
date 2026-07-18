@@ -45,6 +45,7 @@ public class AccountService {
     }
 
     public List<Account> findAccountByName(String name){
+        System.out.println("just testing contributions lol");
         return  accountRepository.findAccountByName(name);
     }
 }
