@@ -28,7 +28,11 @@ public class AccountController {
     }
 
     @GetMapping
-    public Iterable<Account> getAllAccounts(){
-        return null;
+    public Iterable<Account> getAllAccounts(@RequestParam (required = false) String name){
+        if(name == null){
+            return accountService.getAllAccounts();
+        }else{
+         return accountService.findAccountByName(name);
+        }
     }
 }
