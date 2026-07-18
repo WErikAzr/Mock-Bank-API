@@ -33,7 +33,7 @@ public class AccountService {
 
         }
         BigDecimal senderNewAmount = senderAccount.getAmount().subtract(amount);
-        BigDecimal receiverNewAmount = receiverAccount.getAmount().subtract(amount);
+        BigDecimal receiverNewAmount = receiverAccount.getAmount().add(amount);
 
         //updating sender account
         accountRepository.updateAmountById(senderId, senderNewAmount);
@@ -45,7 +45,6 @@ public class AccountService {
     }
 
     public List<Account> findAccountByName(String name){
-        System.out.println("just testing contributions lol");
         return  accountRepository.findAccountByName(name);
     }
 }

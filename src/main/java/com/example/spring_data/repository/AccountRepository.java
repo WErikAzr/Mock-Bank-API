@@ -12,9 +12,9 @@ import java.util.List;
 @Repository
 public interface AccountRepository extends CrudRepository<Account, Long> {
     @Modifying
-    @Query("UPDATE account SET amount =:amount WHERE Id=:accountId")
+    @Query("UPDATE account SET amount = :amount WHERE id=:accountId")
     void updateAmountById (Long accountId, BigDecimal amount);
 
-    @Query("SELECT * FROM account WHERE name=:name")
+    @Query("SELECT * FROM account WHERE account_name= :name")
     List<Account> findAccountByName(String name);
 }

@@ -2,15 +2,29 @@ package com.example.spring_data.model;
 
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 
 import java.math.BigDecimal;
 
 public class Account {
 
     @Id
-    private Long accountId;
-    private String name;
+    @Column("id")
+    private Long id;
+
+    @Column("account_name")
+    private String account_name;
+
+    @Column("amount")
     private BigDecimal amount;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public BigDecimal getAmount() {
         return amount;
@@ -20,19 +34,11 @@ public class Account {
         this.amount = amount;
     }
 
-    public String getName() {
-        return name;
+    public String getAccount_name() {
+        return account_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Long getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(Long accountId) {
-        this.accountId = accountId;
+    public void setAccount_name(String account_name) {
+        this.account_name = account_name;
     }
 }
