@@ -15,6 +15,9 @@ public interface AccountRepository extends CrudRepository<Account, Long> {
     @Query("UPDATE account SET amount = :amount WHERE id=:accountId")
     void updateAmountById (Long accountId, BigDecimal amount);
 
+    @Query("SELECT * FROM account WHERE id = :accountId")
+    Account getAccountById(Long accountId);
+
     @Query("SELECT * FROM account WHERE account_name= :name")
     List<Account> findAccountByName(String name);
 }

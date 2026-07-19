@@ -44,6 +44,10 @@ public class AccountService {
         return accountRepository.findAll();
     }
 
+    public Account getAccountById(Long id){
+        return accountRepository.getAccountById(id);
+    }
+
     public List<Account> findAccountByName(String name){
         return  accountRepository.findAccountByName(name);
     }
