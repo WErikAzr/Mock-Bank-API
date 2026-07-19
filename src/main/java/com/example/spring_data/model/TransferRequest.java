@@ -4,7 +4,7 @@ package com.example.spring_data.model;
 import java.math.BigDecimal;
 
 public class TransferRequest {
- //   @NotBlank(message = "Sender Id must be provided")
+    // @NotBlank(message = "Sender Id must be provided")
     private Long senderId;
    // @NotBlank(message = "receiver Id must be provided")
     private Long receiverId;
