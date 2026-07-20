@@ -27,18 +27,14 @@ public class AccountController {
         );
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/getAccountById")
     public ResponseEntity<Account> getAccountByID(@RequestParam Long id){
        Account account = accountService.getAccountById(id);
        return ResponseEntity.status(HttpStatus.OK).body(account);
     }
 
-    @GetMapping
-    public Iterable<Account> getAllAccounts(@RequestParam (required = false) String name){
-        if(name == null){
+    @GetMapping("/getAllAccounts")
+    public Iterable<Account> getAllAccounts(){
             return accountService.getAllAccounts();
-        }else{
-         return accountService.findAccountByName(name);
-        }
     }
 }

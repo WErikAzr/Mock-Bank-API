@@ -45,7 +45,7 @@ public class AccountService {
     }
 
     public Account getAccountById(Long id){
-        return accountRepository.getAccountById(id);
+        return accountRepository.findAccountById(id);
     }
 
     public List<Account> findAccountByName(String name){
