@@ -1,14 +1,19 @@
 package com.example.spring_data.model;
 
 
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 
 public class TransferRequest {
-    // @NotBlank(message = "Sender Id must be provided")
+    @NotNull
     private Long senderId;
-   // @NotBlank(message = "receiver Id must be provided")
+
+    @NotNull
     private Long receiverId;
-   // @DecimalMin(value ="0.05")
+
+    @DecimalMin(value = "0.01")
     private BigDecimal amount;
 
     public BigDecimal getAmount() {
