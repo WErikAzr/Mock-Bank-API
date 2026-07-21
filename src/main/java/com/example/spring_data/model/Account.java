@@ -1,25 +1,28 @@
 package com.example.spring_data.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
 
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "account")
 public class Account {
 
     @Id
     @NotNull
-    @Column("id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
-    @Column("account_name")
     private String account_name;
 
     @NotNull
-    @Column("amount")
     private BigDecimal amount;
 
     public Long getId() {
