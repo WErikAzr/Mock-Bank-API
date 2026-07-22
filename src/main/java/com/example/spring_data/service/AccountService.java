@@ -40,6 +40,14 @@ public class AccountService {
         accountRepository.updateAmountById(receiverId, receiverNewAmount);
     }
 
+    @Transactional
+    public void createNewAccount(String newAccountName){
+        Account newAccount = new Account();
+        newAccount.setAmount(BigDecimal.ZERO);
+        newAccount.setAccountName(newAccountName);
+        accountRepository.save(newAccount);
+    }
+
     public Iterable<Account> getAllAccounts(){
         return accountRepository.findAll();
     }

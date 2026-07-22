@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+
 @RestController
 @RequestMapping("/account")
 public class AccountController {
@@ -25,6 +27,11 @@ public class AccountController {
                 transferRequest.getReceiverId(),
                 transferRequest.getAmount()
         );
+    }
+
+    @PostMapping("/createAccount")
+    public void createNewAccount(@RequestParam String newAccountName){
+         accountService.createNewAccount(newAccountName);
     }
 
     @GetMapping("/getAccountById")

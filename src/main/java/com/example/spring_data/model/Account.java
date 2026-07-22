@@ -11,12 +11,11 @@ import java.math.BigDecimal;
 public class Account {
 
     @Id
-    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
-    private String account_name;
+    private String accountName;
 
     @NotNull
     private BigDecimal amount;
@@ -37,11 +36,11 @@ public class Account {
         this.amount = amount;
     }
 
-    public String getAccount_name() {
-        return account_name;
+    public String getAccountName() {
+        return accountName;
     }
 
-    public void setAccount_name(String account_name) {
-        this.account_name = account_name;
+    public void setAccountName(String account_name) {
+        this.accountName = account_name;
     }
 }
