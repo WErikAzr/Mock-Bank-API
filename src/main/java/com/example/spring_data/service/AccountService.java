@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Service
+@Transactional
 public class AccountService {
 
     private final AccountRepository accountRepository;
@@ -17,7 +18,7 @@ public class AccountService {
         this.accountRepository = accountRepository;
     }
 
-    @Transactional
+
     public void transferMoney(Long senderId, Long receiverId, BigDecimal amount){
         Account senderAccount = accountRepository
                 .findById(senderId)
@@ -40,13 +41,19 @@ public class AccountService {
         accountRepository.updateAmountById(receiverId, receiverNewAmount);
     }
 
-    @Transactional
+
     public void createNewAccount(String newAccountName){
         Account newAccount = new Account();
         newAccount.setAmount(BigDecimal.ZERO);
         newAccount.setAccountName(newAccountName);
         accountRepository.save(newAccount);
     }
+
+    public void deleteAccount(Long id){
+        Account account = accountRepository.findAccountById(id);
+        accountRepository.delete(account);
+    }
+
 
     public Iterable<Account> getAllAccounts(){
         return accountRepository.findAll();
