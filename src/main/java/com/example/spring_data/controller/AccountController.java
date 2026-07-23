@@ -19,22 +19,25 @@ public class AccountController {
     }
 
     @PostMapping("/transferMoney")
-    public void TransferMoney(@Valid @RequestBody TransferRequest transferRequest){
+    public ResponseEntity<TransferRequest> TransferMoney(@Valid @RequestBody TransferRequest transferRequest){
         accountService.transferMoney(
                 transferRequest.getSenderId(),
                 transferRequest.getReceiverId(),
                 transferRequest.getAmount()
         );
+        return ResponseEntity.status(HttpStatus.OK).body(transferRequest);
     }
 
     @PostMapping("/createAccount")
-    public void createNewAccount(@RequestParam String newAccountName){
+    public ResponseEntity<Account> createNewAccount(@RequestParam String newAccountName){
          accountService.createNewAccount(newAccountName);
+         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
     @DeleteMapping("/deleteAccountById")
-    public void deleteAccount(@RequestParam Long accountId){
+    public ResponseEntity<Account> deleteAccount(@RequestParam Long accountId){
         accountService.deleteAccount(accountId);
+        return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
     @GetMapping("/getAccountById")
