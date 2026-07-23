@@ -8,10 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
-
 @RestController
-@RequestMapping("/account")
+@RequestMapping("/v1")
 public class AccountController {
 
     private final AccountService accountService;
@@ -20,7 +18,7 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    @PostMapping
+    @PostMapping("/transferMoney")
     public void TransferMoney(@Valid @RequestBody TransferRequest transferRequest){
         accountService.transferMoney(
                 transferRequest.getSenderId(),
@@ -32,6 +30,11 @@ public class AccountController {
     @PostMapping("/createAccount")
     public void createNewAccount(@RequestParam String newAccountName){
          accountService.createNewAccount(newAccountName);
+    }
+
+    @DeleteMapping("/deleteAccountById")
+    public void deleteAccount(@RequestParam Long accountId){
+        accountService.deleteAccount(accountId);
     }
 
     @GetMapping("/getAccountById")
