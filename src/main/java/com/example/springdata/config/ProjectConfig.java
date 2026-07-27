@@ -15,10 +15,10 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableWebSecurity
+// @EnableWebSecurity
 @EnableFeignClients (basePackages =  "com.example.springdata.proxy")
 public class ProjectConfig {
-
+/*
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) {
         http
@@ -54,4 +54,5 @@ public class ProjectConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+    */
 }
