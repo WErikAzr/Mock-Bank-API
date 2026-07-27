@@ -1,6 +1,7 @@
 package com.example.springdata.controller;
 
 import com.example.springdata.model.Account;
+import com.example.springdata.model.JSONPlaceholderModel;
 import com.example.springdata.model.TransferRequest;
 import com.example.springdata.proxy.JSONPlaceholderProxy;
 import com.example.springdata.service.AccountService;
@@ -25,8 +26,8 @@ public class AccountController {
     }
 
     @GetMapping("/getAllResources")
-    public ResponseEntity<List<JSONPlaceholderProxy>> getAllResources(){
-        List<JSONPlaceholderProxy> allResources = jsonPlaceholderProxy.listAllResources();
+    public ResponseEntity<List<JSONPlaceholderModel>> getAllResources(){
+        List<JSONPlaceholderModel> allResources = jsonPlaceholderProxy.listAllResources();
         return ResponseEntity.status(HttpStatus.OK).body(allResources);
     }
 
