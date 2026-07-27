@@ -1,4 +1,4 @@
-package com.example.spring_data.exception;
+package com.example.springdata.exception;
 
 public class AccountNotFoundException extends RuntimeException {
     public AccountNotFoundException(String message) {

@@ -1,8 +1,9 @@
-package com.example.spring_data.controller;
+package com.example.springdata.controller;
 
-import com.example.spring_data.model.Account;
-import com.example.spring_data.model.TransferRequest;
-import com.example.spring_data.service.AccountService;
+import com.example.springdata.model.Account;
+import com.example.springdata.model.TransferRequest;
+import com.example.springdata.proxy.JSONPlaceholderProxy;
+import com.example.springdata.service.AccountService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +14,17 @@ import org.springframework.web.bind.annotation.*;
 public class AccountController {
 
     private final AccountService accountService;
+    private final JSONPlaceholderProxy jsonPlaceholderProxy;
 
-    public AccountController(AccountService accountService) {
+    public AccountController(AccountService accountService,
+    JSONPlaceholderProxy jsonPlaceholderProxy) {
+        this.jsonPlaceholderProxy = jsonPlaceholderProxy;
         this.accountService = accountService;
+    }
+
+    @GetMapping("/getAllResources")
+    public ResponseEntity<JSONPlaceholderProxy> getAllResources(){
+        return null;
     }
 
     @PostMapping("/transferMoney")

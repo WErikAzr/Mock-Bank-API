@@ -1,5 +1,6 @@
-package com.example.spring_data.config;
+package com.example.springdata.config;
 
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,7 +16,8 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+@EnableFeignClients (basePackages =  "com.example.springdata.proxy")
+public class ProjectConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) {

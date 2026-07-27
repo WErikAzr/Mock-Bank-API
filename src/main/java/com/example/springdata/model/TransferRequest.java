@@ -1,4 +1,4 @@
-package com.example.spring_data.model;
+package com.example.springdata.model;
 
 
 import jakarta.validation.constraints.DecimalMin;

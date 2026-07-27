@@ -1,6 +1,6 @@
-package com.example.spring_data.repository;
+package com.example.springdata.repository;
 
-import com.example.spring_data.model.Account;
+import com.example.springdata.model.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
