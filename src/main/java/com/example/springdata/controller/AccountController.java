@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1")
 public class AccountController {
@@ -23,8 +25,9 @@ public class AccountController {
     }
 
     @GetMapping("/getAllResources")
-    public ResponseEntity<JSONPlaceholderProxy> getAllResources(){
-        return null;
+    public ResponseEntity<List<JSONPlaceholderProxy>> getAllResources(){
+        List<JSONPlaceholderProxy> allResources = jsonPlaceholderProxy.listAllResources();
+        return ResponseEntity.status(HttpStatus.OK).body(allResources);
     }
 
     @PostMapping("/transferMoney")
