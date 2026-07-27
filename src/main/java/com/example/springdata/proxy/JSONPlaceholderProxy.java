@@ -7,6 +7,6 @@ import java.util.List;
 
 @FeignClient(name = "JSONPlaceholder", url="${custom.service.url}")
 public interface JSONPlaceholderProxy {
-    @GetMapping("/post")
+    @GetMapping("/posts")
     List<JSONPlaceholderProxy> listAllResources();
 }
