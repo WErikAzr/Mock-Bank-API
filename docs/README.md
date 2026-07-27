@@ -1,5 +1,5 @@
 # Mock Bank API
-This project is to catch the eye of possible employeers. Therefore its creation is strictly for learning purposses.
+This project is to catch the eye of possible employeers. Therefore its creation is strictly for learning purposes.
 
 This project is created to emulate various functionalities of a bank API by implementing basic CRUD operations. 
 The complexity of the project scales according to how many technologies it implements.
