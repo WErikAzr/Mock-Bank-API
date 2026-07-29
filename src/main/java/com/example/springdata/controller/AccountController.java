@@ -1,7 +1,6 @@
 package com.example.springdata.controller;
 
 import com.example.springdata.model.Account;
-import com.example.springdata.model.JSONPlaceholderModel;
 import com.example.springdata.model.TransferRequest;
 import com.example.springdata.proxy.JSONPlaceholderProxy;
 import com.example.springdata.service.AccountService;
@@ -10,26 +9,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/v1")
 public class AccountController {
 
     private final AccountService accountService;
-    private final JSONPlaceholderProxy jsonPlaceholderProxy;
+;
 
-    public AccountController(AccountService accountService,
-    JSONPlaceholderProxy jsonPlaceholderProxy) {
-        this.jsonPlaceholderProxy = jsonPlaceholderProxy;
+    public AccountController(AccountService accountService) {
+
         this.accountService = accountService;
     }
 
-    @GetMapping("/getAllResources")
-    public ResponseEntity<List<JSONPlaceholderModel>> getAllResources(){
-        List<JSONPlaceholderModel> allResources = jsonPlaceholderProxy.listAllResources();
-        return ResponseEntity.status(HttpStatus.OK).body(allResources);
-    }
+
 
     @PostMapping("/transferMoney")
     public ResponseEntity<TransferRequest> TransferMoney(@Valid @RequestBody TransferRequest transferRequest){
