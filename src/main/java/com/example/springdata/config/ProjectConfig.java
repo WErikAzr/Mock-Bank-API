@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,22 +16,27 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@EnableWebSecurity
 @EnableFeignClients (basePackages =  "com.example.springdata.proxy")
 public class ProjectConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) {
         http
-                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/v1/**").permitAll()
                         .anyRequest().authenticated()
-                )
-                .httpBasic(basic -> {});
+                ).formLogin( (form) ->
+                        form
+                                .loginPage("/login.html")
+                                .permitAll())
+                .logout(LogoutConfigurer::permitAll);
 
         return http.build();
     }
 
+
+    // Adding in memory users
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder encoder) {
         UserDetails standardUser = User.builder()
