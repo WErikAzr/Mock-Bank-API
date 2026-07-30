@@ -2,7 +2,6 @@ package com.example.springdata.controller;
 
 import com.example.springdata.model.Account;
 import com.example.springdata.model.TransferRequest;
-import com.example.springdata.proxy.JSONPlaceholderProxy;
 import com.example.springdata.service.AccountService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -14,13 +13,10 @@ import org.springframework.web.bind.annotation.*;
 public class AccountController {
 
     private final AccountService accountService;
-;
-
     public AccountController(AccountService accountService) {
 
         this.accountService = accountService;
     }
-
 
 
     @PostMapping("/transferMoney")

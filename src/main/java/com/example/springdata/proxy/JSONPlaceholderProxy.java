@@ -10,4 +10,6 @@ import java.util.List;
 public interface JSONPlaceholderProxy {
     @GetMapping("/posts")
     List<JSONPlaceholderModel> listAllResources();
+
+
 }

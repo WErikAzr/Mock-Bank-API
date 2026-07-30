@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,19 +20,24 @@ import org.springframework.security.web.SecurityFilterChain;
 public class ProjectConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) {
+    SecurityFilterChain securityFilterChain(HttpSecurity http) {
+        // @formatter:off
         http
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/v1/**").permitAll()
+                .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/login").permitAll()
                         .anyRequest().authenticated()
-                ).formLogin( (form) ->
+                )
+                .formLogin((form) ->
                         form
-                                .loginPage("/login.html")
-                                .permitAll())
+                                .loginPage("/login")
+                                .permitAll()
+                )
                 .logout(LogoutConfigurer::permitAll);
+        // @formatter:on
 
         return http.build();
     }
+
 
 
     // Adding in memory users
